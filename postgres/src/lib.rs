@@ -111,6 +111,10 @@ impl<'a> Transaction<'a> {
             }
         }
     }
+
+    pub async fn commit(self) -> Result<(), Error> {
+        self.txn.commit().await
+    }
 }
 
 impl<'a> Deref for Transaction<'a> {
